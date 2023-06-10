@@ -4,15 +4,25 @@ import Books from './components/Books'
 import NewBook from './components/NewBook'
 import Login from './components/Login'
 import { useApolloClient } from '@apollo/client'
+import Recommend from './components/Recommend'
 
 const App = () => {
 	const [page, setPage] = useState('authors')
 	const [token, setToken] = useState(null)
-    const client = useApolloClient()
+	const client = useApolloClient()
 
 	const loginButtonChanger = () => {
 		if (token) {
-			return <button onClick={() => setPage('add book')}>add book</button>
+			return (
+				<>
+					<button onClick={() => setPage('add book')}>
+						add book
+					</button>
+					<button onClick={() => setPage('recommend')}>
+						recommendation
+					</button>
+				</>
+			)
 		} else {
 			return <button onClick={() => setPage('login')}>login</button>
 		}
@@ -44,6 +54,8 @@ const App = () => {
 				setPage={setPage}
 				show={page === 'login'}
 			/>
+
+			<Recommend show={page === 'recommend'} />
 		</div>
 	)
 }
