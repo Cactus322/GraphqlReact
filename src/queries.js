@@ -84,3 +84,23 @@ export const LOGIN = gql`
         }
     }
 `
+
+export const BOOK_INFO = gql`
+    fragment BookInfo on Book {
+        title
+        published
+        genres
+        author {
+            name
+        }
+    }
+`
+
+export const BOOK_ADDED = gql`
+    subscription {
+        bookAdded {
+            ...BookInfo
+        }
+    }
+    ${BOOK_INFO}
+`

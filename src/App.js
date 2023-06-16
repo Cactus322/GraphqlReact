@@ -55,7 +55,7 @@ const App = () => {
 				show={page === 'login'}
 			/>
 
-			<Recommend show={page === 'recommend'} />
+			{ token && (<Recommend show={page === 'recommend'} />)}
 		</div>
 	)
 }
