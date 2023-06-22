@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
@@ -10,6 +10,10 @@ const App = () => {
 	const [page, setPage] = useState('authors')
 	const [token, setToken] = useState(null)
 	const client = useApolloClient()
+
+	useEffect(() => {
+		setToken(localStorage.getItem('user-token'))
+	}, [])
 
 	const loginButtonChanger = () => {
 		if (token) {
