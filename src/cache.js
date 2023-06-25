@@ -1,6 +1,4 @@
-import { InMemoryCache } from "@apollo/client"
-
-export const updateCache = (cache, query, addedPerson) => {
+export const updateCache = (cache, query, addedBook) => {
 	const uniqByName = (a) => {
 		let seen = new Set()
 		return a.filter((item) => {
@@ -11,7 +9,7 @@ export const updateCache = (cache, query, addedPerson) => {
 
 	cache.updateQuery(query, ({ allBooks }) => {
 		return {
-			allBooks: uniqByName(allBooks.concat(addedPerson)),
+			allBooks: uniqByName(allBooks.concat(addedBook)),
 		}
 	})
 }
